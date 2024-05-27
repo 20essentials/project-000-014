@@ -1,0 +1,92 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+.container {
+  width: 100%;
+  min-height: 100vh;
+}
+
+body {
+  background-color: black;
+}
+
+.container {
+  overflow: hidden;
+  position: relative;
+
+  .bubbles {
+    position: relative;
+    display: flex;
+
+    span {
+      position: relative;
+      min-width: 2rem;
+      min-height: 2rem;
+      margin: 0 4px;
+      border-radius: 50%;
+      background-color: #00ffff;
+      box-shadow: 0 0 0 10px #00ffff44, 0 0 50px #00ffff, 0 0 100px #00ffff;
+      animation: animate 15s linear infinite;
+      animation-duration: calc(70s / var(--i));
+    }
+
+    span:nth-child(1n) {
+      background-color: #00ff00;
+      box-shadow: 0 0 0 10px #00ff0044, 0 0 50px #00ff00, 0 0 100px #00ff00;
+    }
+
+    span:nth-child(2n) {
+      background-color: #0000ff;
+      box-shadow: 0 0 0 10px #0000ff44, 0 0 50px #0000ff, 0 0 100px #0000ff;
+    }
+
+    span:nth-child(3n) {
+      background-color: #ff00ff;
+      box-shadow: 0 0 0 10px #ff00ff44, 0 0 50px #ff00ff, 0 0 100px #ff00ff;
+    }
+  }
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(100vh) scale(0);
+  }
+
+  100% {
+    transform: translateY(-10vh) scale(1);
+  }
+}
+
+
+@media (width <=1500px) and (orientation: landscape) {
+  html {
+    font-size: 10px;
+  }
+
+  .container {
+    .bubbles {
+      min-width: 1.5rem;
+      min-height: 1.5rem;
+    }
+  }
+}
+
+@media (width <=800px) and (orientation: portrait) {
+  html {
+    font-size: 16px;
+  }
+
+  .container {
+    .bubbles {
+      span {
+        min-width: 1rem;
+        min-height: 1rem;
+      }
+    }
+
+  }
+}
